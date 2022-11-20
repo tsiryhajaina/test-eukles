@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+
+{% block content %}
+
+    <h5 class="mb-0" ><strong>Clients</strong></h5>
+    <span class="text-secondary">Liste des clients dont les clients ont plus de 30 matériels, et dont le matériel vendu est
+supérieur à 30.000 euros.</span>
+
+    <div class="row mt-3">
+        <div class="col-sm-12">
+            <!--Striped table-->
+            <div class="mt-1 mb-3 p-3 button-container bg-white border shadow-sm">
+
+                <table class="table table-striped" id="project_table">
+                    <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Adresse</th>
+                        <th>Nbre matériel</th>
+                        <th>Totaux </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% if clients is defined and clients is not empty %}
+                        {% for client in clients %}
+                            <tr>
+                                <td>{{ client.nomClient }}</td>
+                                <td>{{ client.prenomClient }}</td>
+                                <td>{{ client.adresseClient }}</td>
+                                <td>{{ client.nbrMateriel }}</td>
+                                <td>{{ client.totaux }}</td>
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
+                    </tbody>
+                </table>
+            </div>
+            <!--/Striped table-->
+        </div>
+    </div>
+{% endblock %}

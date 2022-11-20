@@ -1,0 +1,36 @@
+<div class="col-sm-3 col-xs-6 sidebar pl-0">
+    <div class="inner-sidebar mr-3">
+        <!--Image Avatar-->
+        <div class="avatar text-center">
+            <img src="{{ asset('assets/img/profile-home.png') }}" alt="" class="rounded-circle" />
+            <p><strong>Test Eukles</strong></p>
+        </div>
+        <!--Image Avatar-->
+
+        <!--Sidebar Navigation Menu-->
+        <div class="sidebar-menu-container">
+            <ul class="sidebar-menu mt-4 mb-4">
+                <li class="parent">
+                    <a href="#" onclick="toggle_menu('bases'); return false" class=""><i class="fa fa-pencil-square mr-3"> </i>
+                        <span class="none">Bases <i class="fa fa-angle-down pull-right align-bottom"></i></span>
+                    </a>
+                    <ul class="children" id="bases">
+                        <li class="child"><a href="{{ path('app_client_index') }}" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Gestion client</a></li>
+                        <li class="child"><a href="{{ path('app_materiel_index') }}" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Gestion matériel</a></li>
+                    </ul>
+                </li>
+                <li class="parent">
+                    <a href="#" onclick="toggle_menu('informations'); return false" class=""><i class="fa fa-pencil-square mr-3"> </i>
+                        <span class="none">Informations <i class="fa fa-angle-down pull-right align-bottom"></i></span>
+                    </a>
+                    <ul class="children" id="informations">
+                        <li class="child"><a href="{{ path('app_client') }}" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Listes clients</a></li>
+                        <li class="child"><a href="{{ path('app_lien') }}" class="ml-4"><i class="fa fa-angle-right mr-2"></i>Saisie matériel client</a></li>
+                        <li class="child"><a href="{{ path('app_best_client') }}" class="ml-4"><i class="fa fa-angle-right mr-2"></i>Totaux vendus</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!--Sidebar Naigation Menu-->
+    </div>
+</div>

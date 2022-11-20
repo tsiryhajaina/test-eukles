@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="col-sm-6">
+        <div class="mt-4 mb-3 p-3 button-container bg-white border shadow-sm">
+            <h6 class="mb-2">Matériel de chaque client</h6>
+
+            <form action="{{ path('app_save_lien') }}" method="post" id="save-link">
+                <div class="form-group row">
+                    <label for="client" class="control-label col-sm-2">Client</label>
+                    <div class="col-sm-10">
+                        <select name="client" class="form-control" id="client" required>
+                            <option value="">Choisir ...</option>
+                            {% if clients is defined and clients is not empty %}
+                                {% for client in clients %}
+                                    <option value="{{ client.id }}">{{ client.nomClient }}  {{ client.prenomClient }}</option>
+                                {% endfor %}
+                            {% endif %}
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="materiel" class="control-label col-sm-2">Materiel</label>
+                    <div class="col-sm-10">
+                        <select name="materiel" class="form-control" id="materiel" required>
+                            <option value="">Choisir ...</option>
+                            {% if materiels is defined and materiels is not empty %}
+                                {% for materiel in materiels %}
+                                    <option value="{{ materiel.id }}">{{ materiel.libelle }}</option>
+                                {% endfor %}
+                            {% endif %}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="control-label col-sm-2" for="quantite">Quantité</label>
+                    <div class="col-sm-10">
+                        <input type="number" name="quantite" value="" id="quantite" class="form-control" placeholder="quantité" min="1" step="any" required>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="control-label col-sm-2" for="prix-total">Prix Total</label>
+                    <div class="col-sm-10">
+                        <input name="prix_total" type="number" value="" id="prix-total" class="form-control" placeholder="Prix total" min="1" step="any" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <button name="enregistrer" type="submit" class="btn btn-primary">Enregistrer</button>
+                    <button name="enregistrerNouveau" type="submit" class="btn btn-primary">Enregistrer & saisir à nouveau</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+<script type="application/javascript">
+    $(document).ready(function (){
+
+        $('#save-link').on('submit', function () {
+            let prixTotal = $('#prix-total').val(),
+                quantite = $('#quantite').val();
+
+            if(prixTotal < 0 || quantite < 0) {
+                alert('Veuillez verifier votre saisie !');
+                return false;
+            } else {
+                return true;
+            }
+        });
+
+    });
+</script>
+{% endblock %}
